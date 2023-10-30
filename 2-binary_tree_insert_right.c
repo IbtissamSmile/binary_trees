@@ -6,11 +6,11 @@
  *@value: value of new node,
  * Return: Pointer of created node, or NULL on failure or if not defined node.
  */
-binary_tree_t *binary_tree_insert_right(binary_tree_t *parent_node, int value)
+binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 {
 	binary_tree_t *node = NULL;
 
-	if (parent_node == NULL)
+	if (parent == NULL)
 	{
 		return (NULL);
 	}
@@ -22,16 +22,16 @@ binary_tree_t *binary_tree_insert_right(binary_tree_t *parent_node, int value)
 	node->number = value;
 	node->left = NULL;
 	node->right = NULL;
-	node->parent = parent_node;
-	if (parent_node->right != NULL)
+	node->parent = parent;
+	if (parent->right != NULL)
 	{
-		node->right = parent_node->right;
-		parent_node->right = node;
+		node->right = parent->right;
+		parent->right = node;
 		node->right->parent = node;
 	}
 	else
 	{
-		parent_node->right = node;
+		parent->right = node;
 	}
 	return (node);
 }
